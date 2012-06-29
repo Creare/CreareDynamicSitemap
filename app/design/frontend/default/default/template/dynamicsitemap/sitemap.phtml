@@ -1,0 +1,75 @@
+<div class="ones-column">
+<div class="sitempan">
+<h2 class="smh2">Our Main Pages</h2>
+	<ul class="siteul">
+		<?php echo $this->getCreareCMSPages(); // prints out our cms pages ?>
+        <?php $sitemap = Mage::getModel('sitemap/sitemap')->load(1); ?>
+        <?php $sitemapfilename = $sitemap->getSitemapFilename(); ?>
+        <?php if($sitemapfilename != ""): ?>
+			<li><a href="<?php echo Mage::getBaseUrl().$sitemapfilename; ?>" title="XML Sitemap">XML Sitemap</a></li>
+        <?php endif; ?>
+	</ul>
+	<ul class="siteul">
+		<li><a href="<?php echo Mage::getBaseUrl(); ?>" title="Home">Home</a></li>
+		<li><a href="<?php echo Mage::getBaseUrl(); ?>contacts" title="Contact">Contact</a></li>
+		<?php 
+		if($this->helper('customer')->isLoggedIn()) {
+			echo '<li><a href="'.Mage::getBaseUrl().'customer/account/index/" title="Account">Account</a></li>';
+			echo '<li><a href="'.Mage::getBaseUrl().'customer/account/logout/" title="Log Out">Log Out</a></li>';
+		} else {
+			echo '<li><a href="'.Mage::getBaseUrl().'customer/account/" title="Register/Log In">Register/Log In</a></li>'; 
+		}
+		?>
+		<li><a href="<?php echo Mage::getBaseUrl(); ?>catalogsearch/advanced" title="Advanced Search">Advanced Search</a></li>
+	</ul>
+</div>
+<?php
+//<h2 class="smh2">Our Most Popular Products</h2>
+//    <ul class="siteul">
+//        <?php echo $this->getCrearePopularProducts(); // prints out our manual list of products ?>
+<?php
+//    </ul>
+?>
+<div class="sitempan">
+<h2 class="smh2">Our Categories</h2>
+<?php // Thanks to Luci @ Creare for the following code ?>
+<?php $_helper = Mage::helper('catalog/category') ?>
+<?php $_categories = $_helper->getStoreCategories() ?>
+<?php if (count($_categories) > 0): ?>
+	<ul class="sitecatul">
+		<?php foreach($_categories as $_category): ?>
+        <?php //echo $_category->isEnabled(); ?>
+			<li class="cat">
+					<a href="<?php echo $_helper->getCategoryUrl($_category) ?>" title="<?php echo $_category->getName() ?>"><strong class="strongsm"><?php echo $_category->getName() ?></strong></a>
+				<?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
+				<?php $_subcategories = $_category->getChildrenCategories() ?>
+				<?php if (count($_subcategories) > 0): ?>
+					<ul>
+						<?php foreach($_subcategories as $_subcategory): ?>
+							<?php $_nextcategory = Mage::getModel('catalog/category')->load($_subcategory->getId()) ?>
+                            <?php $_nextsubcategories = $_nextcategory->getChildrenCategories() ?>
+							<li>
+								<a href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>" title="<?php echo $_subcategory->getName() ?>">
+									<?php echo $_subcategory->getName() ?>
+								</a>
+                                <?php if (count($_nextsubcategories) > 0): ?>
+                                <ul>
+                                	<?php foreach($_nextsubcategories as $_nextsubcat): ?>
+                                    	<li>
+                                        	<a href="<?php echo $_helper->getCategoryUrl($_nextsubcat) ?>" title="<?php echo $_subcategory->getName() ?> - <?php echo $_nextsubcat->getName() ?>">
+												<?php echo $_nextsubcat->getName() ?>
+                                            </a>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                                <?php endif; ?>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				<?php endif; ?>
+			</li>
+		<?php endforeach; ?>
+	</ul>
+<?php endif; ?>
+</div>
+</div>

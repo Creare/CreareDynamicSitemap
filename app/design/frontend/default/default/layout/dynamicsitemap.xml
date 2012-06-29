@@ -1,0 +1,37 @@
+<?xml version="1.0"?>   
+<layout version="1.0">   
+   <dynamicsitemap_index_index>		
+   
+        <reference name="root">  
+			<action method="unsetChild"><alias>breadcrumbs</alias></action> 
+            <action method="setTemplate"><template>page/1column.phtml</template></action> 
+			<!--<block type="page/html_breadcrumbs" name="breadcrumbs" as="breadcrumbs">
+				<action method="addCrumb">
+					<crumbName>Home</crumbName>
+					<crumbInfo>
+						<label>Home</label>
+						<title>Home</title>
+						<link>/home</link>
+					</crumbInfo>
+				</action>
+				<action method="addCrumb">
+					<crumbName>Sitemap</crumbName>
+					<crumbInfo>
+						<label>Sitemap</label>
+						<title>Sitemap</title>
+					</crumbInfo>
+				</action>
+			</block>   -->
+        </reference>
+		
+		<reference name="head">
+			<action method="setTitle" translate="title"><title>Sitemap</title></action>
+			<action method="addCss"><stylesheet>css/dynamicsitemap.css</stylesheet></action>
+		</reference>	
+		   
+        <reference name="content">   
+            <block type="dynamicsitemap/dynamicsitemap" name="dynamicsitemap.dynamicsitemap" template="dynamicsitemap/sitemap.phtml"/>   
+        </reference>   
+    </dynamicsitemap_index_index>   
+</layout>   
+	

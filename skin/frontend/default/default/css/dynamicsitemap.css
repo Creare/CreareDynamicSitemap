@@ -1,0 +1,12 @@
+/* Creare DynamicSitemap */
+
+.sitempan { width: 100%; float: left; }
+.smh2 { font-size: 1.4em; padding: 10px; display: block; }
+.strongsm { font-size: 1.4em; display: block; }
+.siteul { margin: 5px; padding: 0 0 0 10px; float: left; width: 45%; }
+.siteul li { list-style:inside; font-size:1em!important; }
+.sitecatul { margin: 0 5px; padding: 0 0 0 10px; float: left; width: 100%; }
+.sitecatul li.cat { list-style:none; font-size:1em!important; display: block; float: left; width: 45%; margin: 0 0 10px 0; }
+.sitecatul li.cat ul { margin: 0 5px; padding: 0 0 0 10px; }
+.sitecatul li.cat ul li { list-style:inside; }
+.two-column { width: 50%; float: left; display: block; }

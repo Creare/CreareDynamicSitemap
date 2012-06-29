@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config>
+      <modules>
+        <Creare_DynamicSitemap>
+          <version>0.1.0</version>
+        </Creare_DynamicSitemap>
+      </modules>
+    <frontend>
+      <routers>
+        <dynamicsitemap>
+          <use>standard</use>
+         <args>
+           <module>Creare_DynamicSitemap</module>
+           <frontName>sitemap</frontName>
+         </args>
+        </dynamicsitemap>
+      </routers>
+	  <layout>
+          <updates>
+              <dynamicsitemap>
+                  <file>dynamicsitemap.xml</file>
+              </dynamicsitemap>
+          </updates>
+      </layout>
+    </frontend>
+   <global>   
+      <blocks>   
+         <dynamicsitemap><class>Creare_DynamicSitemap_Block</class></dynamicsitemap>   
+      </blocks>   
+   </global>   
+</config> 
